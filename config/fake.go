@@ -33,6 +33,24 @@ func (c *fakeConfigContainer) Set(key, val string) error {
 	return nil
 }
 
+// Set writes a new value for key.
+func (c *fakeConfigContainer) SetDIY(key string, val interface{}) error {
+	c.data[strings.ToLower(key)] = val
+	return nil
+}
+
+// Set writes a new value for key.
+func (c *fakeConfigContainer) SetMap(key string, val map[string]interface{}) error {
+	c.data[strings.ToLower(key)] = val
+	return nil
+}
+
+// Set writes a new value for key.
+func (c *fakeConfigContainer) SetList(key string, val []interface{}) error {
+	c.data[strings.ToLower(key)] = val
+	return nil
+}
+
 func (c *fakeConfigContainer) String(key string) string {
 	return c.getData(key)
 }

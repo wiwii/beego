@@ -442,6 +442,30 @@ func (c *IniConfigContainer) Set(key, value string) error {
 	return nil
 }
 
+// Set writes a new value for key.
+func (c *IniConfigContainer) SetDIY(key string, val interface{}) error {
+	c.Lock()
+	defer c.Unlock()
+	c.data[key] = val
+	return nil
+}
+
+// Set writes a new value for key.
+func (c *IniConfigContainer) SetMap(key string, val map[string]interface{}) error {
+	c.Lock()
+	defer c.Unlock()
+	c.data[key] = val
+	return nil
+}
+
+// Set writes a new value for key.
+func (c *IniConfigContainer) SetList(key string, val []interface{}) error {
+	c.Lock()
+	defer c.Unlock()
+	c.data[key] = val
+	return nil
+}
+
 // DIY returns the raw value by a given key.
 func (c *IniConfigContainer) DIY(key string) (v interface{}, err error) {
 	if v, ok := c.data[strings.ToLower(key)]; ok {

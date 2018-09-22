@@ -50,6 +50,9 @@ import (
 // Configer defines how to get and set value from configuration raw data.
 type Configer interface {
 	Set(key, val string) error   //support section::key type in given key when using ini type.
+	SetDIY(key string, val interface{}) error
+	SetMap(key string, val  map[string]interface{}) error
+	SetList(key string, val []interface{}) error
 	String(key string) string    //support section::key type in key string when using ini and json type; Int,Int64,Bool,Float,DIY are same.
 	Strings(key string) []string //get string slice
 	Int(key string) (int, error)
