@@ -222,6 +222,30 @@ func (c *JSONConfigContainer) Set(key, val string) error {
 	return nil
 }
 
+// Set writes a new value for key.
+func (c *JSONConfigContainer) SetDIY(key string, val interface{}) error {
+	c.Lock()
+	defer c.Unlock()
+	c.data[key] = val
+	return nil
+}
+
+// Set writes a new value for key.
+func (c *JSONConfigContainer) SetMap(key string, val map[string]interface{}) error {
+	c.Lock()
+	defer c.Unlock()
+	c.data[key] = val
+	return nil
+}
+
+// Set writes a new value for key.
+func (c *JSONConfigContainer) SetList(key string, val []interface{}) error {
+	c.Lock()
+	defer c.Unlock()
+	c.data[key] = val
+	return nil
+}
+
 // DIY returns the raw value by a given key.
 func (c *JSONConfigContainer) DIY(key string) (v interface{}, err error) {
 	val := c.getData(key)
